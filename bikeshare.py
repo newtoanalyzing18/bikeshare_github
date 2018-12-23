@@ -89,7 +89,7 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # display the most common month
+    # display the most common month(s)
     print('Most popular month(s):')
 
     print(df['Start Time'].dt.month.value_counts().iloc[0:5])
@@ -110,7 +110,7 @@ def time_stats(df):
         else:
             break
 
-    # display the most common day of week
+    # display the most common day of week(s)
     print('Most popular day of the week(s):')
     print(df['Start Time'].dt.dayofweek.value_counts().iloc[0:5])
     left = 0

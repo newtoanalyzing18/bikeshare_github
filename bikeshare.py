@@ -27,7 +27,7 @@ def get_filters():
         finally:
             print('\nAttempted Input\n')
 
-    # get user input for month (all, january, february, ... , june)
+    # get user input for month (all, january, february, ... , june) make sure these are integers
     while True:
         try:
             month = input("Filter on what month (select all for all months) "

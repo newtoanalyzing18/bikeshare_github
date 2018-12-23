@@ -2,20 +2,15 @@ import time
 import pandas as pd
 import numpy as np
 
-#chicago = pd.read_csv('C:/Users/cmorehouse/PycharmProjects/Udacity_Intro_Py/chicago.csv'),
-#new_york_city = pd.read_csv('C:/Users/cmorehouse/PycharmProjects/Udacity_Intro_Py/new_york_city.csv'),
-#washington = pd.read_csv('C:/Users/cmorehouse/PycharmProjects/Udacity_Intro_Py/washington.csv')
-
 cities = ['chicago','new york city','washington']
 
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
-
     Returns:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - number of the month to filter by, or "all" to apply no month filter
+        (str) day - number of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
@@ -32,7 +27,7 @@ def get_filters():
         finally:
             print('\nAttempted Input\n')
 
-    # get user input for month (all, january, february, ... , june)
+    # get user input for month (all, january, february, ... , june) make sure these are integers
     while True:
         try:
             month = input("Filter on what month (select all for all months) "
@@ -68,7 +63,6 @@ def get_filters():
 
 def load_data(city, month, day):
     # read and load city data frame
-    # df = pd.read_csv('C:/Users/cmorehouse/PycharmProjects/Udacity_Intro_Py/{}.csv'.format(city))
     df = pd.read_csv('./{}.csv'.format(city))
     # convert times from string to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -95,7 +89,7 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # display the most common month
+    # display the most common month(s)
     print('Most popular month(s):')
 
     print(df['Start Time'].dt.month.value_counts().iloc[0:5])
@@ -116,7 +110,7 @@ def time_stats(df):
         else:
             break
 
-    # display the most common day of week
+    # display the most common day of week(s)
     print('Most popular day of the week(s):')
     print(df['Start Time'].dt.dayofweek.value_counts().iloc[0:5])
     left = 0
@@ -302,4 +296,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

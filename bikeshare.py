@@ -9,8 +9,8 @@ def get_filters():
     Asks user to specify a city, month, and day to analyze.
     Returns:
         (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) month - number of the month to filter by, or "all" to apply no month filter
+        (str) day - number of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
@@ -63,7 +63,6 @@ def get_filters():
 
 def load_data(city, month, day):
     # read and load city data frame
-    # df = pd.read_csv('C:/Users/cmorehouse/PycharmProjects/Udacity_Intro_Py/{}.csv'.format(city))
     df = pd.read_csv('./{}.csv'.format(city))
     # convert times from string to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
